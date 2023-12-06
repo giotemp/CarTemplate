@@ -15,4 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+})->name('welcome');
+
+
+Route::prefix('/user')->middleware('auth')->group(function () {
+    Route::resource('/cars', 'App\Http\Controllers\CarController');
 });
+
